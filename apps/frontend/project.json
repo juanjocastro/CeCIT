@@ -1,0 +1,38 @@
+{
+	"name": "frontend",
+	"projectType": "application",
+	"root": "apps/frontend",
+	"sourceRoot": "apps/frontend/src",
+	"targets": {
+		"build": {
+			"executor": "@nx/js:node",
+			"options": {
+				"outputPath": "dist/apps/frontend",
+				"main": "app/build/index.js"
+			}
+		},
+		"dev": {
+			"executor": "nx:run-commands",
+			"options": {
+				"command": "vite dev",
+				"cwd": "apps/frontend",
+				"forwardAllArgs": true
+			}
+		},
+		"preview": {
+			"executor": "nx:run-commands",
+			"options": {
+				"command": "vite preview",
+				"cwd": "apps/frontend"
+			}
+		},
+		"lint": {
+			"executor": "@nx/linter:eslint",
+			"outputs": ["{options.outputFile}"],
+			"options": {
+				"lintFilePatterns": ["apps/frontend/**/*.{ts,js,svelte}"]
+			}
+		}
+	},
+	"tags": []
+}
