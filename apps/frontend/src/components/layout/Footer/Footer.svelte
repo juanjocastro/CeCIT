@@ -25,14 +25,11 @@
 	</div>
 	<div class="mb-1 flex h-5 w-full flex-col items-center justify-center gap-0.5">
 		<span>España 147, Alta Gracia, Córdoba, Argentina</span>
-		<span>Tel. (03547) 3547446368</span>
+		<span class="pb-4">Tel. (03547) 3547446368</span>
 	</div>
 	<hr class="h-0.5 w-full bg-black" />
-	<div
-		class="flex h-5 w-full items-center justify-center"
-		style={`background-color: ${$mainColor}`}
-	>
-		<span class="pb-3 font-bold">Copyright ©2021 CeCIT | Desarrollado por Ing. Laura Morcillo</span
+	<div class="flex w-full items-center justify-center" style={`background-color: ${$mainColor}`}>
+		<span class="pb-4 font-bold">Copyright ©2021 CeCIT | Desarrollado por Ing. Laura Morcillo</span
 		>
 	</div>
 </footer>

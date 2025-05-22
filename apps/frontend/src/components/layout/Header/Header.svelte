@@ -81,7 +81,7 @@
 			<li class="group relative">
 				<a
 					href="http://centrodecomercioag.com.ar/quienes-somos/"
-					class="h-10 p-4 text-lg text-gray-800 transition-colors duration-300 group-hover:text-blue-700"
+					class="h-10 p-4 text-base text-gray-800 transition-colors duration-300 group-hover:text-blue-700"
 				>
 					Institucional
 
@@ -122,7 +122,7 @@
 			<li class="group relative">
 				<a
 					href="http://centrodecomercioag.com.ar/hacete-socio/"
-					class="py-4 text-lg text-red-600 transition-all hover:text-red-800"
+					class="py-4 text-base text-red-600 transition-all hover:text-red-800"
 					>Hacete socio
 					<i
 						class="fa-solid fa-chevron-up relative -right-0.5 scale-90 rotate-180 transition duration-300 group-hover:rotate-0"
