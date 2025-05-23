@@ -1,15 +1,23 @@
 <script lang="ts">
 	import BenefitCard from '../../components/layout/BenefitCard/BenefitCard.svelte';
-	import { type EmblaCarouselType } from 'embla-carousel';
+	import { type EmblaCarouselType, type EmblaOptionsType } from 'embla-carousel';
 	import { useEmbla } from '../../config/svelte-embla';
+	import { browser } from '$app/environment';
 	interface Benefit {
 		title: string;
 		img: string;
 		description: string;
 	}
+	let displayArrows = 'sm:hidden';
 
 	let emblaApi: EmblaCarouselType;
-	const options = {};
+	const options: EmblaOptionsType = {
+		skipSnaps: true,
+		breakpoints: {
+			'(min-width: 0px)': { watchDrag: true },
+			'(min-width: 640px)': { watchDrag: false }
+		}
+	};
 
 	function setupEmbla(node: HTMLElement) {
 		const { destroy, embla } = useEmbla(node, options);
@@ -55,19 +63,37 @@
 			img: 'https://img.freepik.com/vector-gratis/ilustracion-concepto-yoga_114360-1191.jpg'
 		}
 	];
+
+	if (browser) {
+		window.addEventListener('resize', () => {
+			console.log('aadawdas');
+			if (emblaApi.canScrollNext() || emblaApi.canScrollPrev()) displayArrows = 'sm:block';
+			else displayArrows = 'sm:hidden';
+		});
+	}
+	$: if (emblaApi) {
+		if (emblaApi.canScrollNext() || emblaApi.canScrollPrev()) {
+			displayArrows = 'sm:block';
+		} else {
+			displayArrows = 'sm:hidden';
+		}
+	}
 </script>
 
-<div class="flex h-full items-center justify-center">
+<div class="flex h-full flex-col items-start justify-center">
+	<h1 class="h1 pt-4 pl-8 text-black">Beneficios Destacados</h1>
 	<!-- Carrusel de beneficios destacados(cartas) -->
-	<div class="relative mt-10 flex w-full flex-row items-center justify-center gap-4 sm:w-full">
+	<div class="relative mt-10 flex w-full items-center justify-start gap-4 sm:w-full">
 		<button
-			on:click={scrollToPrev}
-			class="absolute top-1/3 left-0 z-20 ml-4 hidden size-10 rounded-full border-2 border-gray-600 bg-transparent transition hover:bg-gray-600 hover:text-white sm:block"
+			onclick={() => {
+				scrollToPrev();
+			}}
+			class={`absolute top-1/3 left-0 z-20 ml-4 hidden size-10 rounded-full border-2 border-gray-600 bg-white transition hover:bg-gray-600 hover:text-white ${displayArrows}`}
 			aria-label="Anterior"
 		>
 			<i class="fa-solid fa-arrow-left"></i>
 		</button>
-		<div class="z-10 w-screen overflow-hidden" use:setupEmbla>
+		<div class="z-10 overflow-hidden px-5" use:setupEmbla>
 			<div class="mr-6 flex h-full gap-6 pb-10 sm:mr-2">
 				{#each cards as card}
 					<BenefitCard description={card.description} img={card.img} title={card.title} />
@@ -75,8 +101,11 @@
 			</div>
 		</div>
 		<button
-			on:click={scrollToNext}
-			class="absolute top-1/3 right-0 z-20 mr-4 hidden size-10 rounded-full border-2 border-gray-600 bg-transparent transition hover:bg-gray-600 hover:text-white sm:block"
+			onclick={() => {
+				if (!emblaApi.canScrollPrev()) emblaApi.scrollTo(1);
+				else scrollToNext();
+			}}
+			class={`absolute top-1/3 right-0 z-20 mr-4 hidden size-10 rounded-full border-2 border-gray-600 bg-white transition  hover:bg-gray-600 hover:text-white ${displayArrows}`}
 			aria-label="Siguiente"
 		>
 			<i class="fa-solid fa-arrow-right"></i>

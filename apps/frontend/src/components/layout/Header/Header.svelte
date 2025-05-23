@@ -102,7 +102,7 @@
 	</div>
 </div>
 
-<nav class="h-28 w-full bg-white shadow-lg shadow-gray-200">
+<nav class="sticky h-28 w-full bg-white shadow-lg shadow-gray-200">
 	<div class="mx-auto flex h-full w-10/12 items-center justify-between p-4 sm:px-12 sm:py-4">
 		<!-- Logo -->
 		<div class="flex items-center gap-4">
