@@ -81,9 +81,10 @@
 </script>
 
 <div class="flex h-full flex-col items-start justify-center">
-	<h1 class="h1 pt-4 pl-8 text-black">Beneficios Destacados</h1>
 	<!-- Carrusel de beneficios destacados(cartas) -->
-	<div class="relative mt-10 flex w-full items-center justify-start gap-4 sm:w-full">
+	<div class="relative mt-10 flex w-full flex-col items-start justify-start gap-4 px-8 sm:w-full">
+		<h1 class="h1 pt-4 text-black">Beneficios Destacados</h1>
+		<p class="text-lg">Estos son los beneficios más populares ahora mismo. ¡Echales un vistazo!</p>
 		<button
 			onclick={() => {
 				scrollToPrev();
@@ -93,8 +94,8 @@
 		>
 			<i class="fa-solid fa-arrow-left"></i>
 		</button>
-		<div class="z-10 overflow-hidden px-5" use:setupEmbla>
-			<div class="mr-6 flex h-full gap-6 pb-10 sm:mr-2">
+		<div class="z-10 w-full overflow-hidden" use:setupEmbla>
+			<div class="mr-6 flex h-full flex-row gap-6 pb-10 sm:mr-2">
 				{#each cards as card}
 					<BenefitCard description={card.description} img={card.img} title={card.title} />
 				{/each}
