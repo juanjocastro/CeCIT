@@ -85,15 +85,24 @@
 				<i class="fa-solid fa-x text-2xl text-black"></i>
 			</button>
 		</div>
-		<div class="flex flex-col">
-			<div class="px-3.5 py-5">
-				<a href="#a" aria-label="Institucional"> Institucional</a>
+		<div class="flex w-full flex-col">
+			<div class="w-full border-t-2 border-b-2 border-gray-400">
+				<a href="#a" class="block w-full px-5 py-3.5 font-bold" aria-label="Institucional">
+					Institucional</a
+				>
+				<a
+					href="#a"
+					class="block w-full border-t-2 border-gray-500 px-5 py-3.5 font-bold"
+					aria-label="Institucional"
+				>
+					Iniciar Sesion</a
+				>
 			</div>
 		</div>
 	</div>
 </div>
 
-<nav class="h-28 w-full border-b bg-white shadow-sm">
+<nav class="h-28 w-full bg-white shadow-lg shadow-gray-200">
 	<div class="mx-auto flex h-full w-10/12 items-center justify-between p-4 sm:px-12 sm:py-4">
 		<!-- Logo -->
 		<div class="flex items-center gap-4">

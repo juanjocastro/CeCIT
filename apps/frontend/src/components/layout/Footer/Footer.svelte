@@ -4,7 +4,7 @@
 
 <footer
 	style={`background-color: ${$mainColor}`}
-	class="flex w-screen flex-col items-center justify-center gap-4 pt-10"
+	class="mt-10 flex w-screen flex-col items-center justify-center gap-4 pt-10"
 >
 	<div
 		class="flex h-3/5 w-full flex-col items-center justify-center sm:flex-row sm:items-end sm:justify-evenly"

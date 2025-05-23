@@ -10,6 +10,7 @@
     "@nestjs/platform-express": "^10.0.2",
     "@nx/nest": "^21.1.1",
     "axios": "^1.6.0",
+    "embla-carousel-svelte": "^8.6.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0",
     "sv": "^0.8.6",
