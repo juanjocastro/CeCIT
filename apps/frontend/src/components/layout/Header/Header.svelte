@@ -169,7 +169,7 @@
 					<a
 						href="http://centrodecomercioag.com.ar/hacete-socio/"
 						class="py-4 text-base text-red-600 transition-all hover:text-red-800"
-						>Hacete socio
+						>Listado
 					</a>
 					<!-- <i
 						class="fa-solid fa-chevron-up relative -top-4 -left-1 scale-50 rotate-180 transition duration-300 group-hover:rotate-0"
