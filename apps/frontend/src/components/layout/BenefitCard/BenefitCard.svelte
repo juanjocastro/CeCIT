@@ -1,10 +1,15 @@
 <script lang="ts">
-	import type { Benefit } from '../../../types/beneficio.type';
+	import type { BenefitCardType } from '../../../types/beneficio.type';
 
-	export let card: Benefit;
+	export let card: BenefitCardType;
+	export let hover: boolean = true;
+
+	const hoverClass = hover
+		? 'transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-gray-400'
+		: '';
 </script>
 
-<div class="embla__slide h-72 border-2 border-gray-100 p-4 shadow-lg shadow-gray-300">
+<div class={`embla__slide h-72 p-4 shadow-lg shadow-gray-300 ${hoverClass}`}>
 	<button>
 		<div class="flex h-full flex-col items-center justify-center gap-1.5 text-center">
 			<img src={card.img} class="aspect-square w-4/5 object-cover" alt="" />

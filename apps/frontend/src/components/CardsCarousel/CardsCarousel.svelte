@@ -3,7 +3,7 @@
 	import { type EmblaCarouselType, type EmblaOptionsType } from 'embla-carousel';
 	import { useEmbla } from '../../config/svelte-embla';
 	import { browser } from '$app/environment';
-	import type { Benefit } from '../../types/beneficio.type';
+	import type { BenefitCardType } from '../../types/beneficio.type';
 	let displayArrows = 'sm:hidden';
 
 	let emblaApi: EmblaCarouselType;
@@ -32,7 +32,7 @@
 		}
 	}
 
-	const cards: Benefit[] = [
+	const cards: BenefitCardType[] = [
 		{
 			title: 'Helado Artesanal',
 			description: 'Sabor natural',
@@ -91,7 +91,7 @@
 	}
 </script>
 
-<div class="relative mt-10 flex w-full flex-col items-start justify-start gap-4 sm:w-full">
+<div class="relative mt-10 flex flex-col items-start justify-start gap-4 sm:w-full">
 	<h1 class="h1 px-8 pt-4 text-black">Beneficios Destacados</h1>
 	<p class="px-8 text-lg">
 		Estos son los beneficios más populares ahora mismo. ¡Echales un vistazo!
@@ -106,7 +106,7 @@
 		<i class="fa-solid fa-arrow-left"></i>
 	</button>
 	<div class="z-10 w-full overflow-hidden" use:setupEmbla>
-		<div class="mr-6 flex h-full flex-row gap-6 px-8 pb-10 sm:mr-2">
+		<div class="mr-6 flex h-full flex-row gap-6 px-8 pb-14 sm:mr-2">
 			{#each cards as card}
 				<BenefitCard {card} />
 			{/each}
