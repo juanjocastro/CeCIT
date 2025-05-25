@@ -16,9 +16,7 @@
 	});
 </script>
 
-<main
-	class={` flex min-h-screen max-w-screen flex-col items-center overflow-x-hidden overflow-y-hidden bg-white`}
->
+<main class={` flex min-h-screen max-w-screen flex-col items-center bg-white`}>
 	<Header></Header>
 
 	<div class="w-full flex-grow">

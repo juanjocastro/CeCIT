@@ -8,7 +8,7 @@
 </script>
 
 <div
-	class="hidden h-20 w-full flex-row items-center justify-center sm:inline-flex"
+	class=" h-20 w-full flex-row items-center justify-center sm:inline-flex"
 	style={`background-color: ${$mainColor}`}
 >
 	<div class="flex h-full w-10/12 flex-row items-center justify-center">
@@ -102,7 +102,7 @@
 	</div>
 </div>
 
-<nav class="sticky top-0 h-28 w-full bg-white shadow-lg shadow-gray-200">
+<nav class="sticky top-0 z-50 h-28 w-full bg-white shadow-lg shadow-gray-200">
 	<div class="mx-auto flex h-full w-10/12 items-center justify-between p-4 sm:px-12 sm:py-4">
 		<!-- Logo -->
 		<div class="flex items-center gap-4">
