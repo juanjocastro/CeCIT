@@ -36,6 +36,9 @@
     --color-secondary-800: #075985;
     --color-secondary-900: #0c4a6e;
 }
+body{
+    overflow-x: hidden;
+}
 
 html {
     -webkit-text-size-adjust: 100%;

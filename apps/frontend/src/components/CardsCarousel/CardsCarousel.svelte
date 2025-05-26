@@ -3,7 +3,8 @@
 	import { type EmblaCarouselType, type EmblaOptionsType } from 'embla-carousel';
 	import { useEmbla } from '../../config/svelte-embla';
 	import { browser } from '$app/environment';
-	import type { BenefitCardType } from '../../types/beneficio.type';
+	import type { BenefitCardType } from '../../types/benefit.type';
+	import { actualCard } from '../../store/writeable-store';
 	let displayArrows = 'sm:hidden';
 
 	let emblaApi: EmblaCarouselType;
@@ -35,43 +36,59 @@
 	const cards: BenefitCardType[] = [
 		{
 			title: 'Helado Artesanal',
-			description: 'Sabor natural',
-			img: 'https://img.freepik.com/vector-gratis/coleccion-tarjetas-helado_23-2148576611.jpg'
+			subTitle: 'Sabor natural',
+			img: 'https://img.freepik.com/vector-gratis/coleccion-tarjetas-helado_23-2148576611.jpg',
+			description:
+				'Accedé a un exquisito helado artesanal preparado con ingredientes frescos, sin conservantes ni aditivos artificiales. Ideal para disfrutar en una tarde de verano o como un mimo después de un día largo.'
 		},
 		{
 			title: 'Descuento en Supermercado',
-			description: 'Ahorro diario',
-			img: 'https://img.freepik.com/vector-gratis/ilustracion-concepto-supermercado_114360-1090.jpg'
+			subTitle: 'Ahorro diario',
+			img: 'https://img.freepik.com/vector-gratis/ilustracion-concepto-supermercado_114360-1090.jpg',
+			description:
+				'Obtené un descuento exclusivo en tu compra del supermercado y aprovechá para llevarte todo lo que necesitás al mejor precio. Una ayuda real para tu bolsillo en las compras del día a día.'
 		},
 		{
 			title: 'Café Gratis',
-			description: 'Energía extra',
-			img: 'https://img.freepik.com/vector-gratis/plantilla-menu-cafe-dibujado-mano_23-2148773961.jpg'
+			subTitle: 'Energía extra',
+			img: 'https://img.freepik.com/vector-gratis/plantilla-menu-cafe-dibujado-mano_23-2148773961.jpg',
+			description:
+				'Disfrutá de un café de calidad sin costo para acompañar tu jornada. Ya sea que estés arrancando el día o necesites una pausa revitalizante, este beneficio es perfecto para vos.'
 		},
 		{
 			title: 'Entrada al Cine',
-			description: 'Diversión asegurada',
-			img: 'https://img.freepik.com/vector-gratis/plantilla-entrada-cine_23-2147731225.jpg'
+			subTitle: 'Diversión asegurada',
+			img: 'https://img.freepik.com/vector-gratis/plantilla-entrada-cine_23-2147731225.jpg',
+			description:
+				'Viví una experiencia cinematográfica única con una entrada gratuita al cine. Elegí la película que más te guste y relajate disfrutando de la mejor pantalla y sonido envolvente.'
 		},
 		{
 			title: 'Clase de Yoga',
-			description: 'Bienestar físico',
-			img: 'https://img.freepik.com/vector-gratis/ilustracion-concepto-yoga_114360-1191.jpg'
+			subTitle: 'Bienestar físico',
+			img: 'https://img.freepik.com/vector-gratis/ilustracion-concepto-yoga_114360-1191.jpg',
+			description:
+				'Sumate a una clase de yoga guiada por profesionales para mejorar tu flexibilidad, aliviar tensiones y conectar con tu respiración. Ideal para renovar tu energía y cuidar tu salud integral.'
 		},
 		{
 			title: 'Clase de Yoga',
-			description: 'Bienestar físico',
-			img: 'https://img.freepik.com/vector-gratis/plantilla-menu-cafe-dibujado-mano_23-2148773961.jpg'
+			subTitle: 'Bienestar físico',
+			img: 'https://img.freepik.com/vector-gratis/plantilla-menu-cafe-dibujado-mano_23-2148773961.jpg',
+			description:
+				'Accedé a una sesión completa de yoga pensada para todo nivel, donde podrás trabajar cuerpo y mente en un espacio de calma y concentración. Una oportunidad ideal para reconectarte con vos mismo.'
 		},
 		{
 			title: 'Clase de Yoga',
-			description: 'Bienestar físico',
-			img: 'https://img.freepik.com/vector-gratis/ilustracion-concepto-yoga_114360-1191.jpg'
+			subTitle: 'Bienestar físico',
+			img: 'https://img.freepik.com/vector-gratis/ilustracion-concepto-yoga_114360-1191.jpg',
+			description:
+				'Disfrutá de una clase de yoga especialmente diseñada para ayudarte a liberar el estrés cotidiano, mejorar tu postura y aumentar tu fuerza interior. Una pausa saludable que te merecés.'
 		},
 		{
 			title: 'Café Gratis',
-			description: 'Energía extra',
-			img: 'https://img.freepik.com/vector-gratis/plantilla-menu-cafe-dibujado-mano_23-2148773961.jpg'
+			subTitle: 'Energía extra',
+			img: 'https://img.freepik.com/vector-gratis/plantilla-menu-cafe-dibujado-mano_23-2148773961.jpg',
+			description:
+				'Conseguí una taza de café totalmente gratis para activar tu día o acompañar una buena charla. Ideal para momentos de estudio, trabajo o simplemente para darte un gusto sin gastar.'
 		}
 	];
 
@@ -88,6 +105,10 @@
 		} else {
 			displayArrows = 'sm:hidden';
 		}
+	}
+
+	$: {
+		console.log($actualCard);
 	}
 </script>
 
@@ -123,3 +144,25 @@
 		<i class="fa-solid fa-arrow-right"></i>
 	</button>
 </div>
+
+{#if $actualCard !== null}
+	<!-- Fondo interactivo accesible -->
+	<div
+		role="button"
+		tabindex="0"
+		aria-label="Cerrar modal"
+		class="fixed top-0 left-0 z-100 flex h-screen w-screen items-center justify-center bg-black/50"
+		onclick={() => ($actualCard = null)}
+		onkeydown={(e) => {
+			if (e.key === 'Enter' || e.key === ' ') $actualCard = null;
+		}}
+	>
+		<button onclick={(e) => e.stopPropagation()} aria-label="Parar propagacion">
+			<div class="flex h-4/12 w-4/12 items-center justify-center bg-white shadow-md shadow-white">
+				<div class="h-full w-full p-4">
+					<img src={$actualCard.img} alt="" class="aspect-square" />
+				</div>
+			</div>
+		</button>
+	</div>
+{/if}
