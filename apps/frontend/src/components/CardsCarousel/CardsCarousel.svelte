@@ -5,6 +5,7 @@
 	import { browser } from '$app/environment';
 	import type { BenefitCardType } from '../../types/benefit.type';
 	import { actualCard } from '../../store/writeable-store';
+	import { mainColor } from '../../store/readables-store';
 	let displayArrows = 'sm:hidden';
 
 	let emblaApi: EmblaCarouselType;
@@ -107,12 +108,24 @@
 		}
 	}
 
+	if (browser) {
+		window.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape') $actualCard = null;
+		});
+	}
+
 	$: {
-		console.log($actualCard);
+		if (browser) {
+			if ($actualCard !== null) {
+				document.body.style.overflowY = 'hidden';
+			} else {
+				document.body.style.overflowY = 'auto';
+			}
+		}
 	}
 </script>
 
-<div class="relative mt-10 flex flex-col items-start justify-start gap-4 sm:w-full">
+<div class="relative mt-10 flex w-full flex-col items-start justify-start gap-4">
 	<h1 class="h1 px-8 pt-4 text-black">Beneficios Destacados</h1>
 	<p class="px-8 text-lg">
 		Estos son los beneficios más populares ahora mismo. ¡Echales un vistazo!
@@ -127,7 +140,7 @@
 		<i class="fa-solid fa-arrow-left"></i>
 	</button>
 	<div class="z-10 w-full overflow-hidden" use:setupEmbla>
-		<div class="mr-6 flex h-full flex-row gap-6 px-8 pb-14 sm:mr-2">
+		<div class="mr-6 flex flex-row gap-6 px-8 pb-14">
 			{#each cards as card}
 				<BenefitCard {card} />
 			{/each}
@@ -146,23 +159,54 @@
 </div>
 
 {#if $actualCard !== null}
-	<!-- Fondo interactivo accesible -->
 	<div
 		role="button"
 		tabindex="0"
 		aria-label="Cerrar modal"
-		class="fixed top-0 left-0 z-100 flex h-screen w-screen items-center justify-center bg-black/50"
-		onclick={() => ($actualCard = null)}
+		class="fixed top-0 left-0 z-100 flex h-screen w-screen cursor-default items-center justify-center bg-black/50"
 		onkeydown={(e) => {
 			if (e.key === 'Enter' || e.key === ' ') $actualCard = null;
 		}}
+		onclick={() => ($actualCard = null)}
 	>
-		<button onclick={(e) => e.stopPropagation()} aria-label="Parar propagacion">
-			<div class="flex h-4/12 w-4/12 items-center justify-center bg-white shadow-md shadow-white">
-				<div class="h-full w-full p-4">
-					<img src={$actualCard.img} alt="" class="aspect-square" />
+		<div
+			class="relative flex w-2/3 cursor-default flex-col items-center justify-center rounded-lg bg-white"
+			onclick={(e) => e.stopPropagation()}
+			aria-label="Parar propagacion"
+			role="button"
+			tabindex="0"
+			onkeydown={(e) => {
+				if (e.key === 'Enter' || e.key === ' ') $actualCard = null;
+			}}
+		>
+			<button
+				onclick={() => ($actualCard = null)}
+				class="absolute top-0 right-2 cursor-pointer p-4"
+				aria-label="Cerrar modal"
+			>
+				<i class="fa-solid fa-x text-black"></i>
+			</button>
+			<div class="flex w-full flex-col sm:flex-row">
+				<div class="p-4">
+					<img src={$actualCard.img} class="aspect-square rounded-lg object-cover" alt="" />
+				</div>
+				<div class="flex w-full flex-col items-start justify-center gap-4 p-4 sm:justify-between">
+					<div>
+						<h2 class="text-2xl font-bold text-black">{$actualCard.title}</h2>
+						<span class="h-15 overflow-y-hidden text-lg focus:h-full sm:h-fit"
+							>{$actualCard.description}</span
+						>
+					</div>
+
+					<button
+						aria-label="Ver beneficio"
+						onclick={() => {}}
+						class="h-10 w-full rounded bg-blue-800 text-lg font-bold text-white transition-all hover:bg-blue-950"
+					>
+						Ver Beneficio
+					</button>
 				</div>
 			</div>
-		</button>
+		</div>
 	</div>
 {/if}

@@ -8,7 +8,7 @@
 </script>
 
 <div
-	class=" h-20 w-full flex-row items-center justify-center sm:inline-flex"
+	class=" hidden h-20 w-full flex-row items-center justify-center sm:inline-flex"
 	style={`background-color: ${$mainColor}`}
 >
 	<div class="flex h-full w-10/12 flex-row items-center justify-center">
@@ -72,7 +72,7 @@
 <!-- Menu Desplazante -->
 <div
 	bind:this={slideNavBar}
-	class={`absolute ${classes[$isOpened]} z-40 h-screen w-screen bg-white  shadow-2xl shadow-gray-700 transition-all duration-300  sm:hidden`}
+	class={`absolute ${classes[$isOpened]} z-60 h-screen w-screen bg-white  shadow-2xl shadow-gray-700 transition-all duration-300  sm:hidden`}
 >
 	<div class="flex h-full w-full flex-col">
 		<div class="flex w-full flex-row items-center justify-end p-10">
@@ -102,7 +102,7 @@
 	</div>
 </div>
 
-<nav class="sticky top-0 z-50 h-28 w-full bg-white shadow-lg shadow-gray-200">
+<nav class="sticky top-0 z-50 h-28 w-full bg-white shadow-lg shadow-gray-500/50">
 	<div class="mx-auto flex h-full w-10/12 items-center justify-between p-4 sm:px-12 sm:py-4">
 		<!-- Logo -->
 		<div class="flex items-center gap-4">

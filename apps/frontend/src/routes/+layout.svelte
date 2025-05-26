@@ -19,7 +19,7 @@
 <main class={` flex min-h-screen max-w-screen flex-col items-center bg-white`}>
 	<Header></Header>
 
-	<div class="w-full flex-grow">
+	<div class="w-full flex-grow overflow-x-hidden">
 		{@render children()}
 	</div>
 

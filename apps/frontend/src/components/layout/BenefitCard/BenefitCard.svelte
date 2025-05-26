@@ -15,13 +15,10 @@
 			$actualCard = card;
 		}}
 	>
-		<div class="flex h-full flex-col items-center justify-center gap-1.5 text-center">
+		<div class="flex h-full flex-col items-center justify-around gap-1.5 text-center">
 			<img src={card.img} class="aspect-square w-4/5 object-cover" alt="" />
 			<h3 class="line-clamp-1 text-2xl font-semibold text-black">{card.title}</h3>
 			<span class="font-medium text-black">{card.subTitle}</span>
-			<span class=" text-blue-400 before:top-full before:h-0.5 before:w-full before:bg-blue-400"
-				>Ver Mas</span
-			>
 		</div>
 	</button>
 </div>
