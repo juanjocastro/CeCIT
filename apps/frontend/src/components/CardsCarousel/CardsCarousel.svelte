@@ -139,8 +139,8 @@
 	>
 		<i class="fa-solid fa-arrow-left"></i>
 	</button>
-	<div class="z-10 w-full overflow-hidden" use:setupEmbla>
-		<div class="mr-6 flex flex-row gap-6 px-8 pb-14">
+	<div class="z-10 w-full overflow-x-hidden" use:setupEmbla>
+		<div class="mr-6 flex flex-row gap-10 px-8 pt-4 pb-14">
 			{#each cards as card}
 				<BenefitCard {card} />
 			{/each}
@@ -201,9 +201,9 @@
 					<button
 						aria-label="Ver beneficio"
 						onclick={() => {}}
-						class="h-10 w-full rounded bg-blue-800 text-lg font-bold text-white transition-all hover:bg-blue-950"
+						class="h-10 w-full rounded bg-green-800 text-lg font-bold text-white transition-all hover:bg-green-700"
 					>
-						Ver Beneficio
+						Ir al Beneficio
 					</button>
 				</div>
 			</div>
